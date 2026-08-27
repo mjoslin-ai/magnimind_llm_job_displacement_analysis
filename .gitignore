@@ -1,0 +1,4 @@
+data/raw/*
+data/processed/*
+.~lock.AI_Job_Displacement_LLM_Framework.xlsx#
+*.pdf
