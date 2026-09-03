@@ -13,7 +13,7 @@ if 'current_job' not in st.session_state:
 # 2. Load Data and Precompute Categories
 @st.cache_data
 def load_data():
-    with open('../data/processed/automation_assessments.json', 'r') as f:
+    with open('../data/processed/automation_checkpoint.json', 'r') as f:
         data = json.load(f)
     df = pd.json_normalize(data)
     
@@ -119,7 +119,6 @@ elif page == "Job Analysis Tool":
         st.write("---")
         st.write("**Task Distribution Analysis**")
         
-        # Categorize tasks into risk buckets
         task_bins = [0, 40, 70, 100.1]
         task_labels = ['Low Risk', 'Medium Risk', 'High Risk']
         job_df['task_risk_category'] = pd.cut(job_df['task_automation_score'], bins=task_bins, labels=task_labels, right=False)
@@ -195,16 +194,17 @@ elif page == "Insights Dashboard":
     st.write("---")
     st.write("**Occupation Comparison**")
     
-    bar_data = occ_scores.sort_values(by='occ_automation_score', ascending=False)
+    bar_data = occ_scores.sort_values(by='occ_automation_score', ascending=True)
     fig_bar = px.bar(
         bar_data, 
-        x='job_title', 
-        y='occ_automation_score', 
+        x='occ_automation_score', 
+        y='job_title', 
         color='risk_category',
         color_discrete_map={'Low': 'green', 'Medium': 'goldenrod', 'High': 'red'},
         labels={'job_title': 'Occupation', 'occ_automation_score': 'Automation Likelihood (%)'},
+        orientation='h'
     )
-    fig_bar.update_layout(xaxis_tickangle=-45)
+    fig_bar.update_layout(height=max(500, len(bar_data) * 30))
     st.plotly_chart(fig_bar, use_container_width=True)
 
     st.write("---")
@@ -214,16 +214,17 @@ elif page == "Insights Dashboard":
     overall_dim_avg = df[dim_cols].mean().reset_index()
     overall_dim_avg.columns = ['Dimension', 'Average Score']
     overall_dim_avg['Dimension'] = [d.replace('_', ' ').title() for d in dimensions]
+    overall_dim_avg = overall_dim_avg.sort_values(by='Average Score', ascending=True)
     
     fig_dim_avg = px.bar(
         overall_dim_avg, 
-        x='Dimension', 
-        y='Average Score',
+        x='Average Score', 
+        y='Dimension',
         color='Average Score',
         color_continuous_scale='RdYlGn_r',
-        labels={'Dimension': 'Dimension', 'Average Score': 'Average Score (1-5)'}
+        labels={'Dimension': 'Dimension', 'Average Score': 'Average Score (1-5)'},
+        orientation='h'
     )
-    fig_dim_avg.update_layout(xaxis_tickangle=-45)
     st.plotly_chart(fig_dim_avg, use_container_width=True)
         
     st.write("---")
