@@ -4,3 +4,4 @@ data/checkpoints/*
 .~lock.AI_Job_Displacement_LLM_Framework.xlsx#
 *.pdf
 api_key.txt
+*pycache*
