@@ -7,7 +7,11 @@ Welcome to the AI Job Displacement Analysis Tool. This platform evaluates the su
 """)
 
 st.write("**Data Sources:**")
-st.write("This tool leverages information from the US Bureau of Labor Statistics alongside the O*NET database, which provides a comprehensive breakdown of work characteristics, worker attributes, and skill requirements.")
+st.markdown("""
+This tool draws from two primary data sources:
+* **O\*NET Database:** Provides a comprehensive set of variables detailing work characteristics, worker attributes, and required skills.
+* **US Bureau of Labor Statistics:** Supplies foundational occupational employment and wage statistics.
+""")
 
 st.write("**How it Works:**")
 st.write("Each occupation is assessed across seven framework dimensions (e.g., Task Predictability, Social Requirement, Consequence of Failure). These dimensions calculate a task-level automation score (1-5), which rolls up into the occupation's overall displacement likelihood (0-100%).")
