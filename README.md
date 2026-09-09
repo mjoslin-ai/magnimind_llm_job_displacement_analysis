@@ -2,15 +2,13 @@
 
 An interactive assessment tool that evaluates how likely different occupations and their component tasks are to be replaced or augmented by AI. The tool combines structured occupational data from O*NET with a custom multi-dimensional framework and LLM-based scoring to produce transparent, task-level automation risk estimates.
 
-This project was developed as the final deliverable for the Magnimind Academy Mentorship Program.
-
 ---
 
 ## Overview
 
 Rapid advances in large language models and related AI systems have intensified debate about which jobs will be automated and which will be augmented. Rather than treating entire occupations as monolithic, this tool decomposes jobs into their foundational tasks and scores each task across a set of carefully defined dimensions that capture automatability.
 
-The resulting scores roll up into an overall **displacement likelihood (0–100%)** and a clear risk category, giving workers, educators, employers, and policymakers a data-driven starting point for discussion—not a definitive prediction.
+The resulting scores roll up into an overall **displacement likelihood (0–100%)** and a clear risk category, giving workers, educators, employers, and policymakers a data-driven starting point for discussion, not a definitive prediction.
 
 ---
 
@@ -46,10 +44,10 @@ The resulting scores roll up into an overall **displacement likelihood (0–100%
 ## Key Project Components
 
 ### 1. Automation Assessment Framework
-A structured model with 5–8 (in this implementation, seven) dimensions that characterize automatability. Each dimension is defined, justified, weighted, and scored on a consistent 1–5 scale. An overall automation formula aggregates the dimension scores into a 0–100% displacement likelihood.
+A structured model with dimensions that characterize automatability. Each dimension is defined, justified, weighted, and scored on a consistent 1–5 scale. An overall automation formula aggregates the dimension scores into a 0–100% displacement likelihood.
 
 ### 2. O\*NET Data Pipeline
-Scripts that download, explore, clean, and structure relevant O\*NET files (Occupation Data, Task Statements, Skills, Abilities, Work Activities, Knowledge, Work Context, Tools and Technology). A diverse set of 20–50 occupations is selected to ensure coverage across industries, skill levels, and work types.
+Scripts that download, explore, clean, and structure relevant O\*NET files (Occupation Data, Task Statements, Skills, Abilities, Work Activities, Knowledge, Work Context, Tools and Technology). A diverse set of occupations are selected to ensure coverage across industries, skill levels, and work types.
 
 ### 3. LLM-Powered Analysis
 Prompt-engineered LLM calls that systematically score individual tasks against the framework dimensions. Structured (JSON) output is required for consistency. Temperature is kept low and prompts include clear criteria and examples. Results are validated for face validity and consistency.
@@ -64,18 +62,6 @@ A Streamlit-based interface that lets non-technical users:
 
 ### 5. Visualizations & Insights
 Occupation comparison charts, dimension heatmaps/radar plots, task-score distributions, and summary statistics that highlight patterns across the analyzed set of jobs.
-
----
-
-## Design Decision Documentation
-
-All major design choices are documented, including:
-
-- Selection and weighting of framework dimensions
-- Occupation sampling strategy and diversity criteria
-- Prompt engineering iterations and consistency measures
-- Scoring aggregation formula and risk thresholds
-- Technology stack and UI prioritization
 
 ---
 
@@ -96,15 +82,15 @@ Users should treat the results as a structured starting point for further inquir
 - **Application framework:** Streamlit
 - **Data handling:** Pandas
 - **Visualization:** Plotly (and/or Matplotlib/Seaborn)
-- **LLM APIs:** OpenAI GPT-4 (or equivalent – Anthropic Claude / Google Gemini)
-- **Primary data source:** O\*NET database (Excel / text files or Web Services API)
+- **LLM APIs:** Google Gemini
+- **Primary data source:** O\*NET database 
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- Python 3.9+
+- Python 3.13.5+
 - API key for the chosen LLM provider
 - Downloaded O\*NET database files (or API credentials)
 
