@@ -1,10 +1,15 @@
 import pandas as pd
 import json
 import streamlit as st
+from pathlib import Path
 
 @st.cache_data
 def load_data():
-    with open('../data/processed/automation_checkpoint.json', 'r') as f:
+    # Dynamically resolve the path relative to this script's directory (src/)
+    current_dir = Path(__file__).parent
+    data_path = current_dir.parent / 'data' / 'processed' / 'automation_checkpoint.json'
+    
+    with open(data_path, 'r') as f:
         data = json.load(f)
     df = pd.json_normalize(data)
     
