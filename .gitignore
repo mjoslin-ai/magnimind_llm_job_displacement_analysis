@@ -1,6 +1,5 @@
 data/raw/*
-data/processed/*
-data/checkpoints/*
+unified_data.json
 .~lock.AI_Job_Displacement_LLM_Framework.xlsx#
 *.pdf
 api_key.txt
