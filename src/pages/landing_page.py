@@ -14,7 +14,7 @@ This tool draws from two primary data sources:
 """)
 
 st.write("**How it Works:**")
-st.write("Each occupation is assessed across seven framework dimensions (e.g., Task Predictability, Social Requirement, Consequence of Failure). These dimensions calculate a task-level automation score (1-5), which rolls up into the occupation's overall displacement likelihood (0-100%).")
+st.write("Each occupation is assessed across seven framework dimensions (e.g., Task Predictability, Social Requirement, Consequence of Failure). Google Gemini processes these dimensions through a standardized prompt to calculate a task-level automation score (1-5), which culminates in the occupation's overall displacement likelihood (0-100%).")
 
 st.markdown("""
 **Dimension Scale:**
